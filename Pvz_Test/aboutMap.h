@@ -1,0 +1,46 @@
+#pragma once
+#include <iostream>
+#include <vector>
+#include <easyx.h>
+
+using namespace std;
+
+class Lattice //»ù´¡¸ñ×Ó
+{
+private:
+	int width = 250; 
+	int length = 250;
+	IMAGE* style;
+
+public:
+	enum class time
+	{
+		Grass, //²ÝµØ
+		Water //Ó¾³Ø
+	} now_Time;
+
+	Lattice(const time& t);
+	~Lattice();
+};
+
+class Map
+{
+private:
+	vector<vector<Lattice>>* map; //µØÍ¼
+	
+public:
+	enum class time
+	{
+		Day, //°×Ìì
+		Neight //ºÚÒ¹
+	} this_time;
+
+	enum class style
+	{
+		Grass, //´¿²ÝµØ 5 * 10
+		Pool //Ó¾³Ø 6 * 10
+	} this_style;
+
+	Map(time t, style s);
+	~Map();
+};
